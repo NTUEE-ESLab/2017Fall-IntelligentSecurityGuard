@@ -4,6 +4,9 @@
 - pexpect
 - darknet-nnpack
 ## Installation
+```
+git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
+```
 Install pexpect
 ```
 sudo pip install pexpect
@@ -32,4 +35,5 @@ Install modified [NNPACK](https://github.com/shizukachan/NNPACK)
 git clone https://github.com/shizukachan/NNPACK
 cd NNPACK
 confu setup
+cp 
 '''
