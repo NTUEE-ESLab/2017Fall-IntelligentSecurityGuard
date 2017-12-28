@@ -25,6 +25,7 @@ sudo pip install --upgrade git+https://github.com/Maratyszcza/confu
 ```
 Install [Ninja](https://ninja-build.org/)
 ```
+cd 2017Fall-IntelligentSecurityGuard
 mkdir alter
 cd alter
 git clone https://github.com/ninja-build/ninja.git
