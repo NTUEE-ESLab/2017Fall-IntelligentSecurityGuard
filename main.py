@@ -42,7 +42,7 @@ class route:
         self.button_end=btn_end
 
         self.cmdValue='b'
-        self.delay=1.1
+        self.delay=1
     def forward(self):
         self.disableButtons()
         self.cmdValue='w'
@@ -118,7 +118,7 @@ class status:
         self.win=win
         self.child_process=init()
         self.CAMERA=False
-        self.VIDEO=False
+        self.MONITOR=False
         self.MOVE=0
         self.STOP=False
         self.KEEPMOVING=False
@@ -141,12 +141,16 @@ class status:
         self.btn_keepmoving.configure(command=None)
 Status=status()
 
-class executionThread(Thread):
+class navigationThread(Thread):
     def __init__(self):
         Thread.__init__(self)
-    def run(self):
-        GPIO.add_event_detect(18,GPIO.RISING,callback=IR_callback)  
-        f=open("cmd.txt",'r')
+    def run(self):  
+        try:
+            f=open("cmd.txt",'r')
+        except:
+            Status.changeMessage("No Route!","red")
+            return
+        GPIO.add_event_detect(18,GPIO.RISING,callback=IR_callback)
         line=f.readline()
         currentline=line.split(",")
         while True:
@@ -159,22 +163,22 @@ class executionThread(Thread):
                     return
                 bus.write_byte(address,cmd[key])
                 Status.MOVE+=1
-                time.sleep(1.1)
+                time.sleep(1)
 
-class videoThread(Thread):
+class monitorThread(Thread):
     def __init__(self):
         Thread.__init__(self)
     def run(self):
         Stream=stream()
         while True:
             if Stream.poll()==0:
-                Status.VIDEO=False
+                Status.MONITOR=False
                 return
 
 def IR_callback(channel):
-    if Status.VIDEO:
+    if Status.MONITOR:
         return
-    if(Status.MOVE>1):
+    if(Status.MOVE>2):
         Status.KEEPMOVING=False
         Status.interruptHandler_IR()
         GPIO.output(22,True)
@@ -182,7 +186,8 @@ def IR_callback(channel):
         shot()
         GPIO.output(22,False)
         if recognize(Status.child_process):
-            Status.changeImage("./data/predictions.png")
+            time.sleep(1.5)
+            Status.changeImage("./predictions.png")
             Status.changeMessage("WARNING","red")
             Status.activateKeepMoving()
             while True:
@@ -194,7 +199,8 @@ def IR_callback(channel):
                 GPIO.output(22,False)
                 time.sleep(0.1)
         else:
-            Status.changeImage("./data/predictions.png")
+            time.sleep(1.5)
+            Status.changeImage("./predictions.png")
             Status.changeMessage("      OK","green")
         GPIO.output(16,False)
         GPIO.output(22,False)
@@ -214,8 +220,10 @@ def startNavigation():
     disable_SetupandGO()
     Route.disableButtons()
     Status.changeMessage("","black")
-    OBJ=executionThread()
+    OBJ=navigationThread()
     OBJ.start()
+    Route.enableButtons()
+    enable_SetupandGO()
 
 def stopNavigation():
     Status.STOP=True
@@ -229,12 +237,12 @@ def stopNavigation():
 def monitor():
     if Status.CAMERA:
         return
-    Status.VIDEO=True
-    OBJ=videoThread()
+    Status.MONITOR=True
+    OBJ=monitorThread()
     OBJ.start()
 
 Style().configure("Bold.TButton", font = ('Sans','10','bold'),foreground='black')
-btn_setupRoute=Button(win,text="Set Up Route",command=setupRoute,style="Bold.TButton")
+btn_setupRoute=Button(win,text="Set up Route",command=setupRoute,style="Bold.TButton")
 btn_setupRoute.place(x=15,y=510)
    
 btn_GO=Button(win,text="GO !",command=startNavigation,style="Bold.TButton")
@@ -244,8 +252,8 @@ btn_stop=Button(win,text="STOP",command=stopNavigation,style="Bold.TButton")
 btn_stop.place(x=130,y=600)
 
 Style().configure("VB.TButton",font=('Sans','12','bold'),foreground="green",background="black")
-btn_video=Button(win,text="Monitor",command=monitor,style="VB.TButton")
-btn_video.place(x=120,y=510)
+btn_monitor=Button(win,text="Monitor",command=monitor,style="VB.TButton")
+btn_monitor.place(x=120,y=510)
 
 def disable_SetupandGO():
     btn_setupRoute.state(["disabled"])
