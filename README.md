@@ -9,8 +9,9 @@
 
 ## Requirements
 - python 3
-- pexpect
-- darknet-nnpack
+- pexpect(python module)
+- darknet-nnpack(already built)
+
 ## Installation & Usage
 ```
 git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
@@ -97,6 +98,7 @@ cd darknet-nnpack
 Replace `darknet-nnpack/Makefile` with `replace/Makefile` then `make` it.
 
 (Note that this `Makefile` is only for Rpi3. If you want to run on other platform, modify `-mcpu=cortex-a53` part in the `Makefile` to fit the CPU arch you are using.)
+
 ## Recognize Usage
 If you just want to test the human detection, use the following commands.
 ```python
@@ -111,5 +113,6 @@ recognize(p)
 move()
 ```
 The final image will be `data/predictions.png`.
+
 ## C Library in Python
 The origin version of darknet provides `darknet.py` for python user. Since now we build it with `NNPACK`, the script is no longer usable. After some studies, I make a new version. You can put `replace/darknet.py` under your `darknet-nnpack` directory and simply run it.
