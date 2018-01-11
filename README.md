@@ -116,4 +116,4 @@ move()
 The final image will be `data/predictions.png`.
 
 ## C Library in Python
-The origin version of darknet provides `darknet.py` for python user. Since now we build it with `NNPACK`, the script is no longer usable. After some studies, I make a new version. You can put `replace/darknet.py` under your `darknet-nnpack` directory and simply run it.
+The origin version of [darknet](https://github.com/pjreddie/darknet) provides `darknet.py` for python user. Since now we build it with `NNPACK`, the script is no longer usable. After some studies, I make a new version. You can put `replace/darknet.py` under your `darknet-nnpack` directory and simply run it.
