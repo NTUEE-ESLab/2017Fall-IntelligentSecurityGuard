@@ -13,6 +13,7 @@
 - darknet-nnpack(already built)
 
 ## Installation & Usage
+Log in to Raspberry Pi using SSH.
 ```
 git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
 cd 2017Fall-IntelligentSecurityGuard
