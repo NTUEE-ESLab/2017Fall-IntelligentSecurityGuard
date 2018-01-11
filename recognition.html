@@ -25,6 +25,7 @@
 					<li><a href="index.html">Home</a></li>
 					<li><a href="architecture.html">Architecture</a></li>
 					<li><a href="recognition.html">Recognition</a></li>
+					<li><a href="https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard">Code</a></li>
 					<li><a href="info.html">About Us</a></li>
 				</ul>
 			</nav>
@@ -48,14 +49,55 @@
 								<p>You Only Look Once</p>
 								<h2>YOLO</h2>
 							</header>
-							<h3>1.Instrucion</h3>
-							<p>You only look once (YOLO) is a state-of-the-art, real-time object detection system. On a Titan X it processes images at 40-90 FPS and has a mAP on VOC 2007 of 78.6% and a mAP of 48.1% on COCO test-dev.<h1>-YOLO <a href=https://pjreddie.com/darknet/yolo/ style="text-decoration:none;">website</a></h1></p>
-							<h3>2.How It Works</h3>
-							<img src="images/" alt="" />
-							<h1>sub title</h1>
-							<p>text</p>
-							<h3>3.Speed Up</h3>
-							<h3>4.Recognition Time</h3>
+							<h3>1. Instrucion</h3>
+							<p>"You only look once (YOLO) is a state-of-the-art, real-time object detection system. On a Titan X it processes images at 40-90 FPS and has a mAP on VOC 2007 of 78.6% and a mAP of 48.1% on COCO test-dev." <a href=https://pjreddie.com/darknet/yolo/ style="text-decoration:none;"> - YOLO website</a></p>
+							<h3>2. How It Works</h3>
+							<h1>a. Neural Network</h1>
+							<p>YOLO主要由CNN、DNN、和Maxpooling等類神經網路所組成。如下圖所示。</p>
+							<img src="images/network.png" alt="" />
+							<p> </p>
+							<h1>b. Recognition</h1>
+							<p>一張圖片讀入後，會被劃分成7個區塊。接著會做bouding boxes、confidence的偵測以及每一個區域代表的物體的分類。Bouding boxes代表偵測到物體的位置，一個黑框代表一個物體被偵測到，而confidence代表黑框真的包含一個物體的可能性。透過Bouding boxes搭配各個區域的物體分類，便可成功辨識出圖片中所含的物體及其位置。</p>
+							<img src="images/recognition.png" alt="" />
+							<p>(Picture from <a href=https://pjreddie.com/darknet/yolo/ style="text-decoration:none;">YOLO website</a>. )</p>
+							<p> </p>
+							<h1>c. Darknet</h1>
+							<p>YOLO的作者還開發了Darknet，一套機器學習框架，可在其中找到已經建構好的YOLO網路，並可於YOLO官網下載訓練好的模型。詳細可參考<a href=https://github.com/pjreddie/darknet style="text-decoration:none;">Darknet</a>。</p>
+							<img src="images/darknet.png" alt="" />
+							<p>(Picture from <a href=https://pjreddie.com/darknet/ style="text-decoration:none;">Darknet website</a>. )</p>
+							<p> </p>
+							
+							<h3>3. Speed Up</h3>
+							<h1>NNPACK</h1>
+							<p>YOLO的設計在擁有GPU的運算平台上有快速且優異的表現，然而在Rpi3上，受限於硬體限制，正常辨識一張圖片花費時間長達38秒。因此在這裡使用了NNPACK做搭配。NNPACK是由Facebook開發，專門用來加速神經網路運算的專案，能夠在多核CPU上提高計算效率。詳細可參考<a href=https://github.com/Maratyszcza/NNPACK style="text-decoration:none;">NNPACK</a>。為了在原本的Darkne中加入NNPACK，參考並使用了shizukachan的<a href=https://github.com/shizukachan/darknet-nnpack style="text-decoration:none;">專案</a>，並且針對Rpi的硬體架構做了一些優化，詳細建構方式可參考<a href=https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#build-instructions style="text-decoration:none;">Readme</a>。</p>
+							<img src="images/nnpack.png" alt="" />
+							<p>(Picture from <a href=https://github.com/Maratyszcza/NNPACK style="text-decoration:none;">NNPACK</a>. )</p>
+							<p> </p>
+							
+							<h3>4. Recognition Time</h3>
+							<p>比較建構時，Makefile中的各種不同選項對效能影響，辨識時間如下。</p>
+							<table>
+								<tr>
+								<td>Build Options</td>
+								<td>Recognition time</td>
+								</tr>
+								<tr>
+								<td>NNPACK=0, ARM_NEON=0, NNPACK_FAST=0, -mcpu=native</td>
+								<td>38s</td>
+								</tr>
+								<tr>
+								<td>NNPACK=1, ARM_NEON=0, NNPACK_FAST=0, -mcpu=native</td>
+								<td>3.1s</td>
+								</tr>
+								<tr>
+								<td>NNPACK=1, ARM_NEON=1, NNPACK_FAST=1, -mcpu=native</td>
+								<td>2.3s</td>
+								</tr>
+								<tr>
+								<td>NNPACK=1, ARM_NEON=1, NNPACK_FAST=1, -mcpu=cortex-a53</td>
+								<td>1.6s</td>
+								</tr>
+							</table>
 						</div>
 					</div>
 				</div>
