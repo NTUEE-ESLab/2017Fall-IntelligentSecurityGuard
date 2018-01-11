@@ -1,5 +1,12 @@
 # 2017Fall-IntelligentSecurityGuard
-## Requierments
+## Quick link
+* [Requirements](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#requierments)
+* [Installation & Usage](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#installation--usage)
+* [Build Instructions](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#build-instructions)
+* [Recognize Usage](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#recognize-usage)
+* [C Library in Python](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#c-library-in-python)
+
+## Requirements
 - python 3
 - pexpect
 - darknet-nnpack
