@@ -100,6 +100,8 @@ Replace `darknet-nnpack/Makefile` with `replace/Makefile` then `make` it.
 
 (Note that this `Makefile` is only for Rpi3. If you want to run on other platform, modify `-mcpu=cortex-a53` part in the `Makefile` to fit the CPU arch you are using.)
 
+Ref: [shizukachan/darknet-nnpack](https://github.com/shizukachan/darknet-nnpack)
+
 ## Recognize Usage
 If you just want to test the human detection, use the following commands.
 ```python
