@@ -12,10 +12,7 @@ python main.py
 For the first time, use `navigation` to set up the route. Press `start` then the car will move along the route.
 ## Build Instructions
 If there is any problem, you can try to build the darknet yourself.
-Install pexpect
-```
-sudo pip install pexpect
-```
+
 Log in to Raspberry Pi using SSH.<br/>
 Install [PeachPy](https://github.com/Maratyszcza/PeachPy) and [confu](https://github.com/Maratyszcza/confu)
 ```
@@ -44,11 +41,11 @@ git clone https://github.com/shizukachan/NNPACK
 cd NNPACK
 confu setup
 ```
-If you are using Rpi3, use the following commands.
-```
-cp 
-```
-Otherwise, 
+If you are using Rpi3, use the following commands. Replace `NNPACK/src/init.c` with `replace/init.c`
+
+Otherwise, modify `NNPACK/src/init.c` to fit your CPU arch.
+
+Also, add `-fPIC` to `cflags` and `cxxflags` in `NNPACK/build.ninja`.
 ```
 $NINJA_PATH/ninja
 bin/convolution-inference-smoketest
@@ -88,9 +85,9 @@ Install [darknet-nnpack](https://github.com/shizukachan/darknet-nnpack)
 ```
 git clone https://github.com/shizukachan/darknet-nnpack.git
 cd darknet-nnpack
-make
 ```
-##Recognize Usage
+Replace `darknet-nnpack/Makefile` with `replace/Makefile` then `make` it.
+## Recognize Usage
 If you just want to test the human detection, use the following commands.
 ```python
 # initialize
@@ -104,3 +101,5 @@ recognize(p)
 move()
 ```
 The final image will be `data/predictions.png`.
+## C Library in Python
+The origin version of darknet provides `darknet.py` for python user. Since now we build it with `NNPACK`, the script is no longer usable. After some studies, I make a new version. You can put `replace/darknet.py` under your `darknet-nnpack` directory and simply run it.
