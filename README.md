@@ -11,7 +11,7 @@ python main.py
 ```
 For the first time, use `navigation` to set up the route. Press `start` then the car will move along the route.
 ## Build Instructions
-If there is any problem, you can try to build the darknet yourself.
+If there is any problem, you can try to build the darknet yourself. But do check the directory path of `dartnet-nnpack` and that in `recognize.py`. Or the recognition might crash.
 
 Log in to Raspberry Pi using SSH.<br/>
 Install [PeachPy](https://github.com/Maratyszcza/PeachPy) and [confu](https://github.com/Maratyszcza/confu)
