@@ -8,9 +8,22 @@
 * [C Library in Python](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#c-library-in-python)
 
 ## Requirements
+### Software
 - python 3
 - pexpect(python module)
 - darknet-nnpack(already built)
+
+### Hardware
+- Rpi3 model B
+- Arduino uno
+- Rpi自走車套件
+- 行動電源(5V 2.1A)
+- 9V電池
+- 高亮白LED
+- Rpi camera module
+- 人體紅外線感應器
+- 單路relay
+- 蜂鳴器
 
 ## Installation & Usage
 Log in to Raspberry Pi using SSH.
