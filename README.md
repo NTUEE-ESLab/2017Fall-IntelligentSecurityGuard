@@ -2,7 +2,7 @@
 ## Quick link
 * [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard/index.html)
 * [Motivation](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#motivation)
-* [Requirements](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#requierments)
+* [Requirements](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#requirements)
 * [Implementation](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#implementation)
 * [Installation & Usage](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#installation--usage)
 * [Build Instructions](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#build-instructions)
