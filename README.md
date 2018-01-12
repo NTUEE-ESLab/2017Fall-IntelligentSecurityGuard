@@ -1,11 +1,17 @@
 # 2017Fall-IntelligentSecurityGuard
 ## Quick link
 * [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard/index.html)
+* [Motivation](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#motivation)
 * [Requirements](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#requierments)
+* [Implementation](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#implementation)
 * [Installation & Usage](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#installation--usage)
 * [Build Instructions](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#build-instructions)
 * [Recognize Usage](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#recognize-usage)
 * [C Library in Python](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#c-library-in-python)
+* [Result & Reference](https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard#result--reference)
+
+## Motivation
+在這個房價高漲的時代，不是人人都能住大廈豪宅，就算負擔的起，每年的管理費也是十分驚人!因此，選擇無大廈式管理的居住環境已然是常態，而為了補足這些人居住安全的需求，有台自動機器巡邏車在家中顯得格外重要。我們期望設計出低成本、架構簡單的系統，取代一般警衛的工作，不僅省去人力成本，也保障使用者基本的人身與財產安全。
 
 ## Requirements
 ### Software
@@ -24,6 +30,9 @@
 - 人體紅外線感應器
 - 單路relay
 - 蜂鳴器
+
+## Implementation
+See in [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard/architecture.html)
 
 ## Installation & Usage
 Log in to Raspberry Pi using SSH.
@@ -132,3 +141,6 @@ The final image will be `data/predictions.png`.
 
 ## C Library in Python
 The origin version of [darknet](https://github.com/pjreddie/darknet) provides `darknet.py` for python user. Since now we build it with `NNPACK`, the script is no longer usable. After some studies, I make a new version. You can put `replace/darknet.py` under your `darknet-nnpack` directory and simply run it.
+
+## Result & Reference
+See in [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard/index.html)
