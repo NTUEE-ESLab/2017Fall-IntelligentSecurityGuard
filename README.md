@@ -43,7 +43,7 @@ git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
 cd 2017Fall-IntelligentSecurityGuard
 python main.py
 ```
-For the first time, use `navigation` to set up the route. Press `start` then the car will move along the route.
+For the first time, use `Set Up Route` to set up the route. Press `GO!` then the car will move along the route.
 ## Build Instructions
 If there is any problem, you can try to build the darknet yourself. But do check the directory path of `dartnet-nnpack` and that in `recognize.py`. Or the recognition might crash.
 
