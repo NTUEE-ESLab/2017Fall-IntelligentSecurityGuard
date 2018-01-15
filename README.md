@@ -27,7 +27,7 @@
 - 9V電池
 - 高亮白LED
 - Rpi camera module
-- 人體紅外線感應器
+- 人體紅外線感應器navigation
 - 單路relay
 - 蜂鳴器
 
@@ -35,6 +35,7 @@
 See in [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard/architecture.html)
 
 ## Installation & Usage
+Upload `replace/Arduino_car.ino` to Arduino UNO.
 Log in to Raspberry Pi using SSH.
 ```
 git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
