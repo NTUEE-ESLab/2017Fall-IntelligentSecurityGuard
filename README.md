@@ -36,6 +36,7 @@ See in [Webpage](https://ntuee-eslab.github.io/2017Fall-IntelligentSecurityGuard
 
 ## Installation & Usage
 Upload `replace/Arduino_car.ino` to Arduino UNO.
+
 Log in to Raspberry Pi using SSH.
 ```
 git clone https://github.com/NTUEE-ESLab/2017Fall-IntelligentSecurityGuard.git
